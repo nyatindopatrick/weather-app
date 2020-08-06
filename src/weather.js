@@ -1,10 +1,9 @@
-// import dotenv from 'dotenv';
-// dotenv.config();
 import { init } from './data';
 
 class Weather {
-  constructor(location="Kisumu") {
+  constructor(location) {
     this.location = location;
+    this.data = null;
   }
 
   getWeather() {

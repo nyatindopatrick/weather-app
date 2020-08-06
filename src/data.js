@@ -1,10 +1,5 @@
-const content = document.getElementById('content');
-import { leftDiv } from './view';
-const init = (input) => {
-  const { main, weather, name } = input;
-  const temperature = toCelcius(main.temp) + '\xB0';
-  leftDiv(temperature, name, dateUpdate(), weather[0].main, weather[0].icon);
-};
+import { leftDiv, wDetails } from './view';
+
 const toCelcius = (deg) => Math.round(deg - 273.15);
 
 const dateUpdate = () => {
@@ -18,13 +13,20 @@ const dateUpdate = () => {
     day: '2-digit',
   });
   const [
-    { value: month },
-    ,
-    { value: day },
-    ,
+    { value: month },,
+    { value: day },,
     { value: year },
   ] = dateTimeFormat.formatToParts(d);
   return `${dayName}, ${month} ${day} '${year.substring(2)}`;
+};
+
+const init = (input) => {
+  const {
+    main, weather, name, clouds, wind,
+  } = input;
+  const temperature = `${toCelcius(main.temp)}\xB0`;
+  leftDiv(temperature, name, dateUpdate(), weather[0].main, weather[0].icon);
+  wDetails(clouds.all, wind.speed, main.humidity);
 };
 
 export { init, dateUpdate };
