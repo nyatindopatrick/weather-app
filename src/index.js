@@ -10,6 +10,6 @@ checkWeather().getWeather();
 const buttons = document.getElementById('right');
 
 buttons.addEventListener('click', (e) => {
-  let town = e.target.dataset.city;
+  const town = e.target.dataset.city;
   checkWeather(town).getWeather();
 });
