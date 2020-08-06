@@ -26,7 +26,6 @@ import {
   deg,
 } from './util';
 
-
 [kisumu, nairobi, mombasa, kampala].forEach((item, i) => {
   const datas = ['Kisumu', 'Nairobi', 'Mombasa', 'Kampala'];
   item.dataset.city = datas[i];
@@ -44,23 +43,8 @@ const wDetails = (clouds, winds, humids) => {
 humidity.appendChild(humidSpan);
 wind.appendChild(windSpan);
 cloud.appendChild(cloudSpan);
-[detailsHead, cloud, humidity, wind].forEach((item) =>
-  weatherDetails.appendChild(item)
-);
+[detailsHead, cloud, humidity, wind].forEach((item) => weatherDetails.appendChild(item));
 right.appendChild(weatherDetails);
-
-const leftDiv = (temperature, city, date, climate, icon) => {
-  deg.innerText = temperature;
-  tcity.innerText = city;
-  dateTag.innerText = date;
-  iconTag.src = `http://openweathermap.org/img/w/${icon}.png`;
-  weatherText.innerText = climate;
-  [tcity, dateTag].forEach((item) => cityDateDiv.appendChild(item));
-  [iconTag, weatherText].forEach((item) => weatherDiv.appendChild(item));
-  [deg, cityDateDiv, weatherDiv].forEach((item) => tempData.appendChild(item));
-  left.appendChild(tempData);
-  changeBackground(climate);
-};
 
 const changeBackground = (climate) => {
   const gradient = 'linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.35))';
@@ -76,4 +60,19 @@ const changeBackground = (climate) => {
   }
 };
 
-export { leftDiv, left, right, wDetails, content };
+const leftDiv = (temperature, city, date, climate, icon) => {
+  deg.innerText = temperature;
+  tcity.innerText = city;
+  dateTag.innerText = date;
+  iconTag.src = `http://openweathermap.org/img/w/${icon}.png`;
+  weatherText.innerText = climate;
+  [tcity, dateTag].forEach((item) => cityDateDiv.appendChild(item));
+  [iconTag, weatherText].forEach((item) => weatherDiv.appendChild(item));
+  [deg, cityDateDiv, weatherDiv].forEach((item) => tempData.appendChild(item));
+  left.appendChild(tempData);
+  changeBackground(climate);
+};
+
+export {
+  leftDiv, left, right, wDetails, content,
+};
