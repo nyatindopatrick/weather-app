@@ -9,11 +9,6 @@ const dateTag = tags('small');
 const weatherDiv = tags('div');
 const iconTag = tags('img');
 const weatherText = tags('small');
-const buttonsWrapper = tags('div');
-const kisumu = tags('button');
-const nairobi = tags('button');
-const mombasa = tags('button');
-const kampala = tags('button');
 const hr = tags('hr');
 const weatherDetails = tags('div');
 const detailsHead = tags('h2');
@@ -24,6 +19,13 @@ const windSpan = tags('span');
 const cloud = tags('p');
 const cloudSpan = tags('span');
 const deg = tags('h1');
+const form = tags('form');
+const cityInput = tags('input');
+const unit = tags('input');
+const label = tags('label');
+const slider = tags('span');
+const submit = tags('button');
+const inputGroup = tags('div');
 
 tempData.className = 'tempdata';
 left.className = 'left';
@@ -31,6 +33,22 @@ right.className = 'right';
 cityDateDiv.className = 'citydate';
 weatherDiv.className = 'citydate';
 right.id = 'right';
+label.className = 'switch';
+unit.type = 'checkbox';
+slider.className = 'slider round';
+inputGroup.className = 'input-group';
+
+[unit, slider].forEach((item) => label.appendChild(item));
+
+[cityInput, label].forEach((item) => inputGroup.appendChild(item));
+[inputGroup, submit].forEach((item) => form.appendChild(item));
+
+form.id = 'city-form';
+cityInput.id = 'city';
+cityInput.type = 'text';
+cityInput.placeholder = 'Enter city';
+submit.type = 'submit';
+submit.innerText = 'Search';
 
 weatherDetails.className = 'w-details';
 detailsHead.innerText = 'Weather Details';
@@ -49,11 +67,6 @@ export {
   weatherDiv,
   iconTag,
   weatherText,
-  buttonsWrapper,
-  kisumu,
-  nairobi,
-  mombasa,
-  kampala,
   hr,
   weatherDetails,
   detailsHead,
@@ -64,4 +77,8 @@ export {
   cloud,
   cloudSpan,
   deg,
+  form,
+  cityInput,
+  submit,
+  unit,
 };

@@ -1,7 +1,5 @@
 import { leftDiv, wDetails } from './view';
 
-const toCelcius = (deg) => Math.round(deg - 273.15);
-
 const dateUpdate = () => {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const d = new Date(new Date().toString());
@@ -20,11 +18,12 @@ const dateUpdate = () => {
   return `${dayName}, ${month} ${day} '${year.substring(2)}`;
 };
 
-const init = (input) => {
+const init = (input, unit) => {
+  const measurement = unit === 'metric' ? 'C' : 'F';
   const {
     main, weather, name, clouds, wind,
   } = input;
-  const temperature = `${toCelcius(main.temp)}\xB0`;
+  const temperature = `${Math.round(main.temp)}\xB0${measurement}`;
   leftDiv(temperature, name, dateUpdate(), weather[0].main, weather[0].icon);
   wDetails(clouds.all, wind.speed, main.humidity);
 };
