@@ -22,7 +22,7 @@ A simple vanilla javascript app for fetching weather data for cities using [open
 
 ## Live Demo
 
-[Live link](https://elastic-knuth-e15627.netlify.app)
+[Live link](https://weather-app-pato.netlify.app)
 
 ## Authors
 
